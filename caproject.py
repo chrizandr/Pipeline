@@ -1,5 +1,9 @@
 import re
-list1=['add','addi','sub','subi','multi','bne','beq','bnz']
+def getkey(item):
+    return item[1]
+
+
+list1=['add','addi','sub','subi','multi','bne','beq','bnz','ble']
 list2=['lw','sw','la','li','sb']
 read=['lw','la','add']
 datatypes=['.asciiz','.byte','.word','.text','.data','.globl',':','syscall']
@@ -26,10 +30,12 @@ with open(fname,"r") as fpointer:
   else:
     counter+=1
     div=line.split(",")
-    instruction.append(div[0].split()[0])
+    if len(div[0].split())>1:
+      instruction.append(div[0].split()[0])
       #pre-prcessing
-    div[0]=div[0].split()[1]
-    div[-1]=div[-1].split()[0]
+      div[0]=div[0].split()[1]
+    if len(div[-1].split())>1:
+      div[-1]=div[-1].split()[0]
     for i in range(0,len(div)):
       if re.match("\d+\W+\w+\W+",div[i]):
         div[i]=div[i].split('(')[1].split(')')[0]
@@ -51,7 +57,7 @@ with open(fname,"r") as fpointer:
               variables[div[k]]=[[counter,div[1]]]
             else:
               variables[div[k]]=[[counter]]
-          else:
+        else:
             if instruction[counter] in list1:
               if k is 0:
                 prev=variables[div[k]]
@@ -66,7 +72,7 @@ with open(fname,"r") as fpointer:
                 prev=variables[div[k]]
                 prev.append([counter,div[1]])
                 variables[div[k]]=prev
-            else:
+              else:
                 prev=variables[div[k]]
                 prev.append([counter])
                 variables[div[k]]=prev
@@ -99,4 +105,4 @@ for x in variables.iterkeys():
     prev=l[0]
 prev="NULL"
 print raw
-print raw.sort()
+print sorted(raw,key=getkey)
