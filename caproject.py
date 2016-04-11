@@ -39,7 +39,7 @@ with open(fname,"r") as fpointer:
     for i in range(0,len(div)):
       if re.match("\d+\W+\w+\W+",div[i]):
         div[i]=div[i].split('(')[1].split(')')[0]
-        div[i]=div[i].strip(" ")
+      div[i]=div[i].strip()
       #variables and instructions
     operations.append([instruction[counter]])
     for i in div:
