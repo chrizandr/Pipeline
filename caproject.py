@@ -295,13 +295,13 @@ elif s=='2':
        for j in executed:
            if sorted([i,j])  in raw:
               if instruction[j]=='lw':
-                temp=1+timer[j]
-                flag=1
-              elif instruction[j]=='sw':
                 temp=2+timer[j]
                 flag=1
+              elif instruction[j]=='sw':
+                temp=1+timer[j]
+                flag=1
               else:
-                temp=timer[j]
+                temp=1+timer[j]
                 flag=1
            elif sorted([i,j])  in war:
                temp=timer[j]+0
@@ -321,7 +321,7 @@ elif s=='2':
   print "Execution calculated:"
   for i in range(1,len(instruction)):
     print "Instruction ",i," enters at t=",timer[i]-5
-  print "CPI = ",float(max(timer))/(len(instruction)-1)
+  print "CPI = ",float(max(timer)-5+1)/(len(instruction)-1)
 #----------------------------------------------------------------------------------------------------------
 
 
