@@ -1,6 +1,6 @@
 # caproject
 #----------------------------------------------------------------------------------------------------------------------------------------
-This aim of this project is to build a compiler like program to measure the various In-Order and Out-Of-Order execution times for a given set of MIPS instructions. 
+This aim of this project is to build a program to measure the various In-Order and Out-Of-Order execution times for a given set of MIPS instructions. 
 #----------------------------------------------------------------------------------------------------------------------------------------
 The project is built in two parts:
 1. Assuming only one pipeline exists (Sequential Instruction Execution)
