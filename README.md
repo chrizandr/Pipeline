@@ -1,5 +1,4 @@
-# caproject
-_____
+# Pipeline
 This aim of this project is to build a program to measure the various In-Order and Out-Of-Order execution times for a given set of MIPS instructions. 
 _____
 The project is built in two parts:
